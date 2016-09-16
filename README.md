@@ -1,2 +1,2 @@
 # ftl-json-gen
-ftl json code generator
+Simple code generator based on json data files and Freemarker templates language.
