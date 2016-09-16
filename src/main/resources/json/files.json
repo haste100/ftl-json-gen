@@ -1,0 +1,42 @@
+[
+  {
+    "inName":"report_template.ftl",
+    "outName": "report.jrxml"
+  },
+  {
+    "inName":"report_prepare.ftl",
+    "outName": "report_prepare.ftl"
+  },
+  {
+    "inName":"enum.ftl",
+    "outName": "enum.java"
+  },
+  {
+    "inName":"column_name.ftl",
+    "outName": "ColumnName.java"
+  },
+  {
+    "inName":"object_sql_impl.ftl",
+    "outName": "ObjectSqlImpl.java"
+  },
+  {
+    "inName" :"universal_report_mang_impl.ftl",
+    "outName":"UniversalReportMangImpl.java"
+  },
+  {
+    "inName" :"module_xml.ftl",
+    "outName":"module.xml"
+  },
+  {
+    "inName" :"report_const.ftl",
+    "outName":"ReportConst.java"
+  },
+  {
+    "inName" :"universal_report2_jrxml.ftl",
+    "outName":"universal_report2.jrxml"
+  },
+  {
+    "inName" :"subreport.ftl",
+    "outName":"subreports.jrxml"
+  }
+]
