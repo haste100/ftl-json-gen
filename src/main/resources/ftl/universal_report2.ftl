@@ -1,5 +1,5 @@
 <#setting number_format="######.##">
-<#include "const.ftl" >
+<#include "dml_json.ftl" >
 <!-- parameter map -->
 <#list  objects as object >
 <parameter name="${object.objectName?upper_case}_MAP" class="java.util.Map"/>
@@ -14,7 +14,7 @@
     </parameter>
     <#list object.fields as field>
         <#if !isNote(field)>
-            <#if isString(field) || isCombobox(field) >
+            <#if isString(field) || isCombobox(field) || isRadio(field)>
     <parameter name="${getReportParamName(object, field)}" class="java.lang.String" isForPrompting="false">
         <parameterDescription><![CDATA[${getDesc(field)}]]></parameterDescription>
         <defaultValueExpression><![CDATA[]]></defaultValueExpression>

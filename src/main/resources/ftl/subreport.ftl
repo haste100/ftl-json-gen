@@ -1,5 +1,5 @@
 <#setting number_format="######.##">
-<#include "const.ftl" >
+<#include "dml_json.ftl" >
 <#list objects as object>
 <!-- file subreport_${object.objectName?lower_case}.jrxml -->
 <?xml version="1.0" encoding="UTF-8"?>
@@ -11,7 +11,7 @@
     <#list object.fields as field>
         <#if isString(field)>
     <field name="${getName(field)}" class="java.lang.String"/>
-        <#elseif isCombobox(field)>
+        <#elseif isCombobox(field) || isRadio(field)>
     <field name="${getName(field)}Desc" class="java.lang.String"/>
         <#elseif isDate(field)>
     <field name="${getName(field)}" class="java.util.Date"/>
@@ -30,7 +30,7 @@
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
                 <textFieldExpression class="java.lang.String"><![CDATA[$F{${getName(field)}}]]></textFieldExpression>
             </textField>
-        <#elseif isCombobox(field)>
+        <#elseif isCombobox(field) || isRadio(field)>
             <textField>
                 <reportElement x="${x}" y="0" width="${getWidth(field)}" height="42"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>

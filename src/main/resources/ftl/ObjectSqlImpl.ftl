@@ -1,4 +1,4 @@
-<#include "const.ftl" >
+<#include "dml_json.ftl" >
 <#list objects as object>
 //file ${object.objectName}SqlImpl.java
 package ru.fccland.aki.report.impl.facade.unreport.column;
@@ -43,6 +43,10 @@ public class ${object.objectName}SqlImpl extends JasperQueryHelperImpl implement
         <#elseif isCombobox(field) >
                         if (entry.getKey().equals(${getEnumName(object, field)}.getName())){
                             sb.append(" AND " + ${getEnumName(object, field)}.getSqlName() + " = " +   paramValue.toString() + " ");
+                        }
+        <#elseif isRadio(field) >
+                        if (entry.getKey().equals(${getEnumName(object, field)}.getName())){
+                            sb.append(" AND " + ${getEnumName(object, field)}.getSqlName() + " = " +   paramValue ? '1' : '0' + " ");
                         }
         <#elseif isDate(field) >
                         if (entry.getKey().equals(${getEnumName(object, field)}_FROM.getName())){

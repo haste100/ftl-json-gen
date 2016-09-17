@@ -1,4 +1,4 @@
-<#include "const.ftl" >
+<#include "dml_json.ftl" >
 
 package ru.fccland.rki.web.common;
 

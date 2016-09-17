@@ -13,6 +13,10 @@
     <#return "STR" = getType(field) >
 </#function>
 
+<#function isRadio field >
+    <#return "RADIO" = getType(field) >
+</#function>
+
 <#function isDate field >
     <#return "DATE" = getType(field) >
 </#function>

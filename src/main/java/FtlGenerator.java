@@ -30,10 +30,13 @@ public class FtlGenerator {
 
         for(Map<String, String> file:files) {
 
-            String inName = file.get("inName");
-            String outName = file.get("outName");
+            String name = file.get("name");
+            String extension = file.get("ext");
 
-            Template template = cfg.getTemplate(inName);
+            String ftlName = name+".ftl";
+            String outName = name+'.'+ extension;
+
+            Template template = cfg.getTemplate(ftlName);
             Writer out = new FileWriter(new File(outName));
 
             Map model = new HashMap();

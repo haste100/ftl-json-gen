@@ -1,42 +1,54 @@
 [
   {
-    "inName":"report_template.ftl",
-    "outName": "report.jrxml"
+    "name":"report",
+    "ext": "jrxml"
   },
   {
-    "inName":"report_prepare.ftl",
-    "outName": "report_prepare.ftl"
+    "name":"report_prepare",
+    "ext": "ftl"
   },
   {
-    "inName":"enum.ftl",
-    "outName": "enum.java"
+    "name":"enum",
+    "ext": "java"
   },
   {
-    "inName":"column_name.ftl",
-    "outName": "ColumnName.java"
+    "name":"ColumnName",
+    "ext": "java"
   },
   {
-    "inName":"object_sql_impl.ftl",
-    "outName": "ObjectSqlImpl.java"
+    "name":"ObjectSqlImpl",
+    "ext": "java"
   },
   {
-    "inName" :"universal_report_mang_impl.ftl",
-    "outName":"UniversalReportMangImpl.java"
+    "name" :"UniversalReportMangImpl",
+    "ext":"java"
   },
   {
-    "inName" :"module_xml.ftl",
-    "outName":"module.xml"
+    "name" :"module",
+    "ext":"xml"
   },
   {
-    "inName" :"report_const.ftl",
-    "outName":"ReportConst.java"
+    "name" :"ReportConst",
+    "ext":"java"
   },
   {
-    "inName" :"universal_report2_jrxml.ftl",
-    "outName":"universal_report2.jrxml"
+    "name" :"universal_report2",
+    "ext":"jrxml"
   },
   {
-    "inName" :"subreport.ftl",
-    "outName":"subreports.jrxml"
+    "name" :"subreport",
+    "ext":"jrxml"
+  },
+  {
+    "name" :"ReportManagerImpl",
+    "ext":"java"
+  },
+  {
+    "name" :"ObjectProvider",
+    "ext":"java"
+  },
+  {
+    "name" :"UniversalReportDaoImpl",
+    "ext":"java"
   }
 ]

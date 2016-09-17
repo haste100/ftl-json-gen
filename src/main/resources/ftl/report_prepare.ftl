@@ -1,4 +1,4 @@
-<#include "const.ftl">
+<#include "dml_json.ftl">
 
 ${"<#assign sections_list = ["}
 <#assign index=1 >

@@ -1,4 +1,4 @@
-<#include "const.ftl" >
+<#include "dml_json.ftl" >
 //properties
 <#list objects as object>
     SqlManager ${object.objectName?lower_case}Sql;

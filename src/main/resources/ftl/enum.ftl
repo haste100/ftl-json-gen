@@ -1,4 +1,4 @@
-<#include "const.ftl">
+<#include "dml_json.ftl">
 <#list objects as object>
 //file ${object.objectName}.java
 package ru.fccland.aki.report.enums;

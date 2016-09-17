@@ -54,13 +54,13 @@
     "header" : "Информация о наказании в виде дисквалификации",
     "objectName" : "Disqualification",
     "fields" :[
-      ["Наличие дисквалификации", "disqExists", "CBX", "disq_exists", "100"],
+      ["Наличие дисквалификации", "disqExists", "RADIO", "disq_exists", "100"],
       ["Номер документа", "docNumber", "STR", "doc_number", "100"],
       ["Дата документа", "issueDate", "DATE", "issue_date", "100"],
       ["Срок дисквалификации", "disqDuration", "STR", "disq_duration", "100"],
       ["Период дисквалификации c", "disqStart", "DATE", "disq_start", "100"],
       ["Период дисквалификации по", "disqEnd", "DATE", "disq_end", "100"],
-      ["Дата постановления", "disqActDate", "DATE", "disq_actdate", "100"],
+      ["Дата постановления", "disqActDate", "DATE", "disq_act_date", "100"],
       ["Номер дела", "disqCaseNumber", "STR", "disq_case_number", "100"],
       ["Номер статьи КоАП", "disqKoapNumber", "STR", "disq_koap_number", "100"],
       ["Примечание", "note", "STR", "note", "80"]
@@ -71,7 +71,7 @@
     "header" : "Информация о непогашенной или неснятой судимости",
     "objectName" : "Conviction",
     "fields" :[
-      ["Наличие судимости", "convictionExists", "CBX", "conviction_exists", "100"],
+      ["Наличие судимости", "convictionExists", "RADIO", "conviction_exists", "100"],
       ["Номер документа", "docNumber", "STR", "doc_number", "100"],
       ["Дата документа", "docDate", "DATE", "doc_date", "100"],
       ["Срок и вид наказания", "punishmentForm", "STR", "punishment_form", "100"],

@@ -1,4 +1,4 @@
-<#include "const.ftl" >
+<#include "dml_json.ftl" >
 <#list objects as object>
 <parameter name="${getReportName(object)}" class="java.lang.Boolean" isForPrompting="false">
     <parameterDescription><![CDATA[Раздел ${object.name}]]></parameterDescription>
@@ -12,7 +12,7 @@
     <parameterDescription><![CDATA[${getDesc(field)}]]></parameterDescription>
     <defaultValueExpression><![CDATA[]]></defaultValueExpression>
 </parameter>
-        <#elseif isCombobox(field) >
+        <#elseif isCombobox(field) || isRadio(field)>
 <parameter name="${getReportParamName(object, field)}" class="java.lang.String" isForPrompting="false">
     <parameterDescription><![CDATA[${getDesc(field)}]]></parameterDescription>
     <defaultValueExpression><![CDATA[]]></defaultValueExpression>
