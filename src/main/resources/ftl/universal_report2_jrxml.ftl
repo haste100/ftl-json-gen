@@ -46,7 +46,7 @@
 <#assign x=9859 />
 <#list  objects as object >
         <staticText>
-            <reportElement key="${getReportName(object)}_KEY" style="Cyr Text Body" x="${x}" y="0" width="${object.width}" height="35">
+            <reportElement key="${getReportName(object)}_KEY" style="Cyr Text Body" x="${x}" y="0" width="${getObjectWidth(object)}" height="35">
                 <printWhenExpression><![CDATA[$P{${getReportName(object)}} != null]]></printWhenExpression>
             </reportElement>
             <box>
@@ -76,7 +76,7 @@
             </textElement>
             <text><![CDATA[${getDesc(field)}]]></text>
         </staticText>
-        <#assign x += getWidth(field)?number />
+        <#assign x += getWidth(field) />
     </#list>
 </#list>
 <!-- /column header-->
@@ -86,7 +86,7 @@
 <#assign x=9859 />
 <#list  objects as object >
         <frame>
-            <reportElement x="${x}" y="0" width="${object.width}" height="42">
+            <reportElement x="${x}" y="0" width="${getObjectWidth(object)}" height="42">
                 <printWhenExpression><![CDATA[$P{${getReportName(object)}} != null]]></printWhenExpression>
             </reportElement>
             <box>
@@ -96,13 +96,13 @@
                 <rightPen lineWidth="1.0"/>
             </box>
             <subreport>
-                <reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="${object.width}" height="42">
+                <reportElement positionType="Float" stretchType="RelativeToBandHeight" x="0" y="0" width="${getObjectWidth(object)}" height="42">
                     <printWhenExpression><![CDATA[$P{${getReportName(object)}} != null]]></printWhenExpression>
                 </reportElement>
                 <dataSourceExpression><![CDATA[(new ru.fccland.aki.universalreport.datasource.RpdDataSource($P{${object.objectName?upper_case}_MAP}.get($F{id}))).create()]]></dataSourceExpression>
                 <subreportExpression class="net.sf.jasperreports.engine.JasperReport"><![CDATA[$P{subreport_${object.objectName?lower_case}.jrxml}]]></subreportExpression>
             </subreport>
         </frame>
-    <#assign x += object.width?number />
+    <#assign x += getObjectWidth(object) />
 </#list>
 <!-- /frames -->

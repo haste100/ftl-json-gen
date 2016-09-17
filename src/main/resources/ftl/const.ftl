@@ -34,7 +34,7 @@
 </#function>
 
 <#function getWidth field>
-    <#return field[FIELD_WIDTH] >
+    <#return field[FIELD_WIDTH]?number >
 </#function>
 
 <#function isNote field >
@@ -49,7 +49,16 @@
     <#return getReportName(object) +"__"+ getName(field)?upper_case>
 </#function>
 
-<#-- field functions -->
+<#-- object functions -->
 <#function getReportName object>
     <#return object.objectName?upper_case+"S_REPORT">
 </#function>
+
+<#function getObjectWidth object>
+    <#assign result = 0 />
+    <#list object.fields as field>
+        <#assign result += getWidth(field) />
+    </#list>
+    <#return result>
+</#function>
+
