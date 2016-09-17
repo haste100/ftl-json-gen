@@ -28,6 +28,9 @@ public class FtlGenerator {
 
         List<Map> objects = getJsonObjects(OBJECT_PROPERTIES_JSON);
 
+        Map model = new HashMap();
+        model.put("objects", objects);
+
         for(Map<String, String> file:files) {
 
             String name = file.get("name");
@@ -38,9 +41,6 @@ public class FtlGenerator {
 
             Template template = cfg.getTemplate(ftlName);
             Writer out = new FileWriter(new File(outName));
-
-            Map model = new HashMap();
-            model.put("objects", objects);
 
             template.process(model, out);
 
