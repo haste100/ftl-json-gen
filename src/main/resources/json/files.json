@@ -1,54 +1,15 @@
 [
-  {
-    "name":"report",
-    "ext": "jrxml"
-  },
-  {
-    "name":"report_prepare",
-    "ext": "ftl"
-  },
-  {
-    "name":"enum",
-    "ext": "java"
-  },
-  {
-    "name":"ColumnName",
-    "ext": "java"
-  },
-  {
-    "name":"ObjectSqlImpl",
-    "ext": "java"
-  },
-  {
-    "name" :"UniversalReportMangImpl",
-    "ext":"java"
-  },
-  {
-    "name" :"module",
-    "ext":"xml"
-  },
-  {
-    "name" :"ReportConst",
-    "ext":"java"
-  },
-  {
-    "name" :"universal_report2",
-    "ext":"jrxml"
-  },
-  {
-    "name" :"subreport",
-    "ext":"jrxml"
-  },
-  {
-    "name" :"ReportManagerImpl",
-    "ext":"java"
-  },
-  {
-    "name" :"ObjectProvider",
-    "ext":"java"
-  },
-  {
-    "name" :"UniversalReportDaoImpl",
-    "ext":"java"
-  }
+  "report.jrxml",
+  "report_prepare.ftl",
+  "enum.java",
+  "ColumnName.java",
+  "ObjectSqlImpl.java",
+  "UniversalReportMangImpl.java",
+  "module.xml",
+  "ReportConst.java",
+  "universal_report2.jrxml",
+  "subreport.jrxml",
+  "ReportManagerImpl.java",
+  "ObjectProvider.java",
+  "UniversalReportDaoImpl.java"
 ]

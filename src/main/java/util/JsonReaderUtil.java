@@ -21,7 +21,7 @@ public class JsonReaderUtil {
         mapper.configure(ALLOW_COMMENTS, true);
     }
 
-    public static List<Map> getJsonObjects(String fileName) throws IOException {
+    public static List getJsonObjects(String fileName) throws IOException {
         InputStream isData = getResourceAsStream(fileName);
         ObjectReader reader = mapper.readerFor(List.class);
         return reader.readValue(isData);

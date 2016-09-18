@@ -24,30 +24,32 @@ public class FtlGenerator {
 
         Configuration cfg = getConfiguration();
 
-        List<Map> files = getJsonObjects(FILES_JSON);
+        List<String> files = getJsonObjects(FILES_JSON);
 
         List<Map> objects = getJsonObjects(OBJECT_PROPERTIES_JSON);
 
         Map model = new HashMap();
         model.put("objects", objects);
 
-        for(Map<String, String> file:files) {
+        for(String file:files) {
 
-            String name = file.get("name");
-            String extension = file.get("ext");
-
-            String ftlName = name+".ftl";
-            String outName = name+'.'+ extension;
+            String ftlName = getFileName(file) +".ftl";
 
             Template template = cfg.getTemplate(ftlName);
-            Writer out = new FileWriter(new File(outName));
+            Writer out = new FileWriter(new File(file));
 
             template.process(model, out);
 
-            LOG.info("Generated source for "+outName);
+            LOG.info("Generated source for "+ file);
         }
 
         LOG.info("Generation done.");
+    }
+
+    private static String getFileName(String file) {
+        int index = file.indexOf(".");
+
+        return file.substring(0, index);
     }
 
 }
