@@ -11,5 +11,6 @@
   "subreport.jrxml",
   "ReportManagerImpl.java",
   "ObjectProvider.java",
-  "UniversalReportDaoImpl.java"
+  "UniversalReportDaoImpl.java",
+  "ReportType.java"
 ]
