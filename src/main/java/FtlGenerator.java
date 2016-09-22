@@ -17,20 +17,40 @@ public class FtlGenerator {
 
     static Logger LOG = Logger.getLogger(FtlGenerator.class.getName());
 
-    static final String OBJECT_PROPERTIES_JSON = "json/object_properties.json";
-    static final String FILES_JSON = "json/files.json";
-
     public static void main(String[] args) throws Exception {
 
-        Configuration cfg = getConfiguration();
+        String objectsFile="", templatesFile = "";
 
-        List<String> files = getJsonObjects(FILES_JSON);
+        for (String arg:args) {
+            LOG.info(arg);
+            if (arg.startsWith("-h")) {
+                showHelp();
+                return;
+            } else if (arg.startsWith("-o")) {
+                objectsFile = arg.substring(2, arg.length());
+                LOG.info("objectsFile is "+objectsFile);
+            } else if (arg.startsWith("-t")) {
+                templatesFile = arg.substring(2, arg.length());
+                LOG.info("templatesFile is "+templatesFile);
+            }
+        }
 
-        List<Map> objects = getJsonObjects(OBJECT_PROPERTIES_JSON);
+        if ((templatesFile == null) || (templatesFile.length()==0)) {
+            LOG.info("No templates file!");
+            return;
+        }
+        if ((objectsFile == null) || (objectsFile.length()==0)) {
+            LOG.info("No objects file!");
+            return;
+        }
+        List<String> files = getJsonObjects(templatesFile);
+
+        List<Map> objects = getJsonObjects(objectsFile);
 
         Map model = new HashMap();
         model.put("objects", objects);
 
+        Configuration cfg = getConfiguration();
         for(String file:files) {
 
             String ftlName = getFileName(file) +".ftl";
@@ -44,6 +64,13 @@ public class FtlGenerator {
         }
 
         LOG.info("Generation done.");
+    }
+
+    private static void showHelp() {
+        LOG.info("Usage main -o<objects> -t<templates>\n"+
+                "\t-o<objects>\n" +
+                "\t-t<templates>\n" +
+                "\t-h this help");
     }
 
     private static String getFileName(String file) {

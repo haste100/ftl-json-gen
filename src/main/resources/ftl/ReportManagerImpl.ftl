@@ -4,6 +4,11 @@
 params.put("${object.objectName?upper_case}_MAP", null);
 </#list>
 
+//init if
+<#list objects as object>
+|| reportType.equals(ReportType.UNIVERSAL_SUBREPORT_${object.objectName?upper_case})
+</#list>
+
 //fill map
 <#list objects as object>
     // ${object.objectName} Subreport

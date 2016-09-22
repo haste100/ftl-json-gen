@@ -28,19 +28,19 @@
             <textField>
                 <reportElement x="${x}" y="0" width="${getWidth(field)}" height="42"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression class="java.lang.String"><![CDATA[$F{${getName(field)}}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{${getName(field)}}]]></textFieldExpression>
             </textField>
         <#elseif isCombobox(field) || isRadio(field)>
             <textField>
                 <reportElement x="${x}" y="0" width="${getWidth(field)}" height="42"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression class="java.lang.String"><![CDATA[$F{${getName(field)}Desc}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{${getName(field)}Desc}]]></textFieldExpression>
             </textField>
         <#elseif isDate(field)>
             <textField pattern="dd.MM.yyyy">
                 <reportElement x="${x}" y="0" width="${getWidth(field)}" height="42"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle"/>
-                <textFieldExpression class="java.util.Date"><![CDATA[$F{${getName(field)}}]]></textFieldExpression>
+                <textFieldExpression><![CDATA[$F{${getName(field)}}]]></textFieldExpression>
             </textField>
         </#if>
         <#assign x += getWidth(field)?number />
