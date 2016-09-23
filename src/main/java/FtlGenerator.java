@@ -17,35 +17,27 @@ public class FtlGenerator {
 
     static Logger LOG = Logger.getLogger(FtlGenerator.class.getName());
 
+    static Config config;
+
     public static void main(String[] args) throws Exception {
 
-        String objectsFile="", templatesFile = "";
-
+        String configFile=null;
         for (String arg:args) {
             LOG.info(arg);
             if (arg.startsWith("-h")) {
                 showHelp();
                 return;
-            } else if (arg.startsWith("-o")) {
-                objectsFile = arg.substring(2, arg.length());
-                LOG.info("objectsFile is "+objectsFile);
-            } else if (arg.startsWith("-t")) {
-                templatesFile = arg.substring(2, arg.length());
-                LOG.info("templatesFile is "+templatesFile);
+            } else if (arg.startsWith("-c")) {
+                configFile = arg.substring(2, arg.length());
+                LOG.info("objectsFile is "+configFile);
             }
         }
 
-        if ((templatesFile == null) || (templatesFile.length()==0)) {
-            LOG.info("No templates file!");
-            return;
-        }
-        if ((objectsFile == null) || (objectsFile.length()==0)) {
-            LOG.info("No objects file!");
-            return;
-        }
-        List<String> files = getJsonObjects(templatesFile);
+        config = Config.create(configFile);
 
-        List<Map> objects = getJsonObjects(objectsFile);
+        List<String> files = config.getTemplates();
+
+        List<Map> objects = getJsonObjects(config.getDataFile());
 
         Map model = new HashMap();
         model.put("objects", objects);
@@ -68,8 +60,7 @@ public class FtlGenerator {
 
     private static void showHelp() {
         LOG.info("Usage main -o<objects> -t<templates>\n"+
-                "\t-o<objects>\n" +
-                "\t-t<templates>\n" +
+                "\t-c<json/config.json>\n" +
                 "\t-h this help");
     }
 

@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_COMMENTS;
 
@@ -15,16 +17,34 @@ import static com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_COMMENTS;
  */
 public class JsonReaderUtil {
 
+    static Logger LOG = Logger.getLogger(JsonReaderUtil.class.getName());
+
     static final ObjectMapper mapper = new ObjectMapper();
 
     static {
         mapper.configure(ALLOW_COMMENTS, true);
     }
 
-    public static List getJsonObjects(String fileName) throws IOException {
+    public static List getJsonObjects(String fileName) {
         InputStream isData = getResourceAsStream(fileName);
         ObjectReader reader = mapper.readerFor(List.class);
-        return reader.readValue(isData);
+        try {
+            return reader.readValue(isData);
+        } catch (IOException e) {
+            LOG.log(Level.WARNING, "Error read file", e);
+        }
+        return null;
+    }
+
+    public static Map getJsonObject(String fileName) {
+        InputStream isData = getResourceAsStream(fileName);
+        ObjectReader reader = mapper.readerFor(Map.class);
+        try {
+            return reader.readValue(isData);
+        } catch (IOException e) {
+            LOG.log(Level.WARNING, "Error read file", e);
+        }
+        return null;
     }
 
     static InputStream getResourceAsStream(String fileName) {
