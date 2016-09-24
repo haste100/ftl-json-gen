@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.logging.Logger;
 
 import static util.ConfigurationUtil.getConfiguration;
-import static util.JsonReaderUtil.getJsonObjects;
+import static util.JsonReaderUtil.getJsonObject;
 
 /**
  * Created by haste on 06.09.16.
@@ -33,11 +33,11 @@ public class FtlGenerator {
             }
         }
 
-        config = Config.create(configFile);
+        config = (Config) getJsonObject(configFile, Config.class);
 
         List<String> files = config.getTemplates();
 
-        List<Map> objects = getJsonObjects(config.getDataFile());
+        List objects = (List) getJsonObject(config.getDataFile(), List.class);
 
         Map model = new HashMap();
         model.put("objects", objects);

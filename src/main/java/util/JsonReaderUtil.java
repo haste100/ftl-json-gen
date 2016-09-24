@@ -25,20 +25,9 @@ public class JsonReaderUtil {
         mapper.configure(ALLOW_COMMENTS, true);
     }
 
-    public static List getJsonObjects(String fileName) {
+    public static Object getJsonObject(String fileName, Class aClass) {
         InputStream isData = getResourceAsStream(fileName);
-        ObjectReader reader = mapper.readerFor(List.class);
-        try {
-            return reader.readValue(isData);
-        } catch (IOException e) {
-            LOG.log(Level.WARNING, "Error read file", e);
-        }
-        return null;
-    }
-
-    public static Map getJsonObject(String fileName) {
-        InputStream isData = getResourceAsStream(fileName);
-        ObjectReader reader = mapper.readerFor(Map.class);
+        ObjectReader reader = mapper.readerFor(aClass);
         try {
             return reader.readValue(isData);
         } catch (IOException e) {
