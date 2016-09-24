@@ -9,7 +9,7 @@
 <!-- param fields -->
 <#list  objects as object >
     <parameter name="${getReportName(object)}" class="java.lang.Boolean" isForPrompting="false">
-        <parameterDescription><![CDATA[Раздел ${object.name}]]></parameterDescription>
+        <parameterDescription><![CDATA[${object.name}]]></parameterDescription>
         <defaultValueExpression><![CDATA[false]]></defaultValueExpression>
     </parameter>
     <#list object.fields as field>
