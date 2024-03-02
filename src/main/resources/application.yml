@@ -1,0 +1,7 @@
+spring.main.web-application-type: none
+
+dataFile: "json/object_properties.json"
+
+ftl.base.package.path: "/ftl"
+
+ftlTemplates: "report.jrxml,report_prepare.ftl,enum.java,ColumnName.java,ObjectSqlImpl.java,UniversalReportMangImpl.java,module.xml,ReportConst.java,universal_report2.jrxml,subreport.jrxml,ReportManagerImpl.java,ObjectProvider.java,UniversalReportDaoImpl.java,ReportType.java"
