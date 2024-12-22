@@ -4,6 +4,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import freemarker.template.Configuration;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import lombok.val;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
@@ -13,23 +14,22 @@ import org.springframework.core.io.Resource;
 
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.Set;
 
 @Slf4j
 @SpringBootApplication
 public class Application implements CommandLineRunner {
 
     private final Configuration cfg;
-    private final String templates;
+    private final Set<String> templates;
     private final Resource dataFile;
     private final ObjectMapper objectMapper;
 
     public Application(@Qualifier("myFtlConfig") Configuration cfg,
-                       @Value("${ftlTemplates}") String templates,
+                       @Value("${ftlTemplates}") Set<String> templates,
                        @Value("${dataFile}") Resource dataFile,
                        ObjectMapper objectMapper) {
         this.cfg = cfg;
@@ -45,16 +45,16 @@ public class Application implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
 
-        var model = new HashMap<String, Object>();
+        val model = new HashMap<String, Object>();
 
-        try (var isData = dataFile.getInputStream()) {
-            var objects = objectMapper.readerFor(List.class).readValue(isData);
+        try (val isData = dataFile.getInputStream()) {
+            val objects = objectMapper.readerFor(List.class).readValue(isData);
             model.put("objects", objects);
         } catch (IOException e) {
             log.error("Error read file", e);
         }
 
-        getTemplates().forEach(
+        templates.forEach(
                 it -> generateTemplate(it, model)
         );
 
@@ -63,23 +63,18 @@ public class Application implements CommandLineRunner {
 
     @SneakyThrows
     private void generateTemplate(String file, Map<String, Object> model) {
-        var ftlName = getFileName(file) +".ftl";
+        val ftlName = getFileName(file) +".ftl";
 
-        var template = cfg.getTemplate(ftlName);
-        var out = new FileWriter(file);
+        val template = cfg.getTemplate(ftlName);
+        val out = new FileWriter(file);
 
         template.process(model, out);
 
-        log.info("Generated source for "+ file);
-    }
-
-    private List<String> getTemplates() {
-        return Arrays.stream(templates.split(","))
-                .collect(Collectors.toList());
+        log.info("Generated source for {}", file);
     }
 
     private String getFileName(String file) {
-        int index = file.indexOf(".");
+        val index = file.indexOf(".");
 
         return file.substring(0, index);
     }
